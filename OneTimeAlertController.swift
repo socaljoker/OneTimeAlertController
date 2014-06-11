@@ -82,9 +82,9 @@ class OneTimeAlertController: UIAlertController {
     }
     
     ///Call this method to present the alert. It will check if the alert has been shown already, and not present it if so. If not, it will present it and mark that it was presented.
-    func presentFromViewController(viewController: UIViewController, animated: Bool, completion:(() -> Void)!) {
+    func presentFromViewController(viewController: AnyObject, animated: Bool, completion:(() -> Void)!) {
         if self.shouldPresentAlert() {
-            viewController.presentViewController(self, animated: animated, completion: {
+            viewController.presentViewController?(self, animated: animated, completion: {
                     self.markAlertAsShown()
                     completion()
                 })
